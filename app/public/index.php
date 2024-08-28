@@ -1,3 +1,3 @@
 <?php
-phpinfo();
-//require realpath("../src/index.php");
+header("NGINX-PHP-FPM: DefaultApp");
+require_once realpath("../src/index.php");

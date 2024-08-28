@@ -79,7 +79,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
   apk del gcc musl-dev linux-headers  augeas-dev python3-dev make autoconf && \
   apk del .sys-deps
 
-RUN pip install --upgrade pip --break-system-packages && mkdir -p /var/www/app/public
+RUN pip install --upgrade pip --break-system-packages && \
+mkdir -p /var/www/app/public && \
+bash -c "echo date.timezone=UTC > /usr/local/etc/php/conf.d/timezone.ini"
 
 #use custom config file
 ADD app/conf/ /var/www/app-conf/
